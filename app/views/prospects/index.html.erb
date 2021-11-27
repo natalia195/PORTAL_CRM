@@ -1,0 +1,54 @@
+<div class= "container container bg-white rounded shadow-sm p-5 my-3">
+<h1> Potenciales Clientes </h1>
+        <div class="table table-bordered table-responsive ">
+            <div class="col text-center">
+              <%= @onprospects.count %> Prospectos
+            </div>
+            <div class="col text-center">
+              <%= @interested.count %> Interesados
+            </div>
+            <div class="col text-center">
+              <%= @clients.count %> Clientes
+            </div>
+        </div>
+  <div class = " table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Mensajes</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @prospects&.each do |p| %>
+        <tr>
+          <td><%= p.first_name %></td>
+          <td><%= p.last_name %></td>
+          <td><%= p.phone %></td>
+          <td><%= p.status %></td>
+          <td>
+            <%= link_to p.conversations.count, prospect_conversations_path(p.id), class: "text-decoration-none ml-2"%>
+            <i class="fas fa-comments"></i>
+            <%= link_to "Nuevo Chat", new_prospect_conversation_path(p.id), class: "btn btn-outline-success btn-sm text-decoration-none ml-2"%>
+          </td>
+          <td>
+            <%= link_to "Editar", edit_prospect_path(p.id), class: "btn btn-outline-secondary btn-sm" %></li>
+            <%= link_to "Borrar", prospect_path(p.id),
+                              class: "btn btn-outline-danger btn-sm",
+                              method: :delete,
+                              data: { confirm: "Estas seguro/a?" } %></li>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+     <%= will_paginate @collection, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+  </div>
+<br>
+  
+  <%= link_to "Nuevo Prospecto", new_prospect_path(current_user), class: "btn btn-primary" %>
+
+</div>

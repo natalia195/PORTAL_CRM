@@ -1,0 +1,8 @@
+    <%= simple_form_for prospect do |f| %>
+        <%= f.input :first_name, label: 'Nombre', placeholder: 'Juan'%>
+        <%= f.input :last_name, label: 'Apellido', placeholder: 'Perez' %>
+        <%= f.input :phone, label: 'Teléfono' %>
+        <%= f.input :email, placeholder: 'usuario@dominio.com' %>
+        <%= f.input :status, label: 'Estado', collection: ["Prospecto", "Muy interesado", "Cliente"] %>
+        <%= f.button :submit, 'Guardar', class: "btn btn-success" %>
+    <% end %>

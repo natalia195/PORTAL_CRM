@@ -1,0 +1,19 @@
+<div class= "container my-3">
+
+    <% @conversations.each do |c|%>
+        <div class="card my-3">
+        <div class="card-header">
+            <%= c.created_at %>
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+            <p><%= c.message %></p>
+            </blockquote>
+        </div>
+        </div>
+    <% end %>
+
+    <%= link_to "volver", prospects_path, class: "btn btn-primary" %>
+    <%= link_to "Nueva Conversación", new_prospect_conversation_path(@prospect), class: "btn btn-primary" %>
+
+</div>

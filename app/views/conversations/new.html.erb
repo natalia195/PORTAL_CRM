@@ -1,0 +1,10 @@
+<div class = "container">
+
+  <h1>Nueva Conversación</h1>
+
+  <%= simple_form_for [@prospect, @conversation] do |f| %>
+    <%= f.input :message, label: 'Mensaje'  %>
+    <%= f.button :submit, "Subir información", class: "btn btn-primary" %>
+  <% end %>
+  
+</div>
